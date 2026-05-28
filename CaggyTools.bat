@@ -1,11 +1,13 @@
 @echo off
 :: CaggyTools - All-in-One Windows Tools
 :: Created by Caggy
-:: Version 1.0
+:: Version 2.0 - Fixed & Stable
+:: Compatible Windows 10/11
 
 setlocal enabledelayedexpansion
 chcp 65001 >nul 2>&1
-title CaggyTools v1.0
+title CaggyTools v2.0
+cd /d %~dp0
 
 :: ========== AUTO ADMIN CHECK ==========
 net session >nul 2>&1
@@ -20,32 +22,32 @@ if %errorlevel% neq 0 (
 cls
 color 0B
 echo.
-echo   +--------------------------------------------------+
-echo   �                                                  �
-echo   �     ������+ �����+  ������+  ������+ ��+   ��+ �
-echo   �    ��+----+��+--��+��+----+ ��+----+ +��+ ��++ �
-echo   �    ���     �����������  ���+���  ���+ +����++  �
-echo   �    ���     ��+--������   ������   ���  +��++   �
-echo   �    +������+���  ���+������+++������++   ���    �
-echo   �     +-----++-+  +-+ +-----+  +-----+    +-+    �
-echo   �                                                  �
-echo   �           T O O L S   B Y   C A G G Y           �
-echo   �                                                  �
-echo   +--------------------------------------------------+
+echo   ╔══════════════════════════════════════════════════╗
+echo   ║                                                  ║
+echo   ║     ██████╗ █████╗  ██████╗  ██████╗ ██╗   ██╗ ║
+echo   ║    ██╔════╝██╔══██╗██╔════╝ ██╔════╝ ╚██╗ ██╔╝ ║
+echo   ║    ██║     ███████║██║  ███╗██║  ███╗ ╚████╔╝  ║
+echo   ║    ██║     ██╔══██║██║   ██║██║   ██║  ╚██╔╝   ║
+echo   ║    ╚██████╗██║  ██║╚██████╔╝╚██████╔╝   ██║    ║
+echo   ║     ╚═════╝╚═╝  ╚═╝ ╚═════╝  ╚═════╝    ╚═╝    ║
+echo   ║                                                  ║
+echo   ║           T O O L S   B Y   C A G G Y           ║
+echo   ║                                                  ║
+echo   ╚══════════════════════════════════════════════════╝
 echo.
-echo   +-------------------------------------+
-echo   �         MENU UTAMA CAGGYTOOLS       �
-echo   �-------------------------------------�
-echo   �  [1] Aktivasi Windows               �
-echo   �  [2] Stop Update Windows (s/d 2077) �
-echo   �  [3] Aktivasi Microsoft Office      �
-echo   �  [4] Download ^& Install Browser     �
-echo   �  [5] Keluar                         �
-echo   +-------------------------------------+
+echo   ╔═════════════════════════════════════╗
+echo   ║         MENU UTAMA CAGGYTOOLS       ║
+echo   ╠═════════════════════════════════════╣
+echo   ║  [1] Aktivasi Windows               ║
+echo   ║  [2] Stop Update Windows (s/d 2077) ║
+echo   ║  [3] Aktivasi Microsoft Office      ║
+echo   ║  [4] Download ^& Install Browser     ║
+echo   ║  [5] Keluar                         ║
+echo   ╚═════════════════════════════════════╝
 echo.
-echo   +-------------------------------------+
-echo   �   CaggyTools by Caggy - v1.0        �
-echo   +-------------------------------------+
+echo   ╔═════════════════════════════════════╗
+echo   ║   CaggyTools by Caggy - v2.0        ║
+echo   ╚═════════════════════════════════════╝
 echo.
 set /p "pilihan=   Masukkan pilihan [1-5]: "
 
@@ -61,14 +63,14 @@ goto menu
 cls
 color 0E
 echo.
-echo   +--------------------------------------+
-echo   �       AKTIVASI WINDOWS (MAS)         �
-echo   +--------------------------------------+
+echo   ╔══════════════════════════════════════╗
+echo   ║       AKTIVASI WINDOWS (MAS)         ║
+echo   ╚══════════════════════════════════════╝
 echo.
 echo   Sedang menjalankan Microsoft Activation Scripts...
 echo   Harap tunggu, proses ini memerlukan koneksi internet.
 echo.
-powershell -Command "irm https://massgrave.dev/get | iex"
+powershell -Command "& {[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; irm https://massgrave.dev/get | iex}"
 echo.
 echo   Proses aktivasi selesai.
 echo   Tekan tombol apa saja untuk kembali ke menu utama...
@@ -80,17 +82,17 @@ goto menu
 cls
 color 0C
 echo.
-echo   +----------------------------------------------+
-echo   �     STOP WINDOWS UPDATE SAMPAI TAHUN 2077    �
-echo   +----------------------------------------------+
+echo   ╔══════════════════════════════════════════════╗
+echo   ║     STOP WINDOWS UPDATE SAMPAI TAHUN 2077    ║
+echo   ╚══════════════════════════════════════════════╝
 echo.
 echo   PERINGATAN: Fitur ini akan menonaktifkan Windows Update
 echo   secara permanen hingga tahun 2077!
 echo.
-echo   +-------------------------------------+
-echo   �  [Y] Ya, lanjutkan                 �
-echo   �  [N] Tidak, kembali ke menu        �
-echo   +-------------------------------------+
+echo   ╔═════════════════════════════════════╗
+echo   ║  [Y] Ya, lanjutkan                 ║
+echo   ║  [N] Tidak, kembali ke menu        ║
+echo   ╚═════════════════════════════════════╝
 echo.
 set /p "konfirmasi=Pilihan Anda (Y/N): "
 
@@ -122,7 +124,7 @@ if /i "%konfirmasi%"=="Y" (
     reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU" /v "AUOptions" /t REG_DWORD /d 1 /f >nul 2>&1
     
     echo.
-    echo   ? Windows Update berhasil dinonaktifkan hingga tahun 2077!
+    echo   [SUKSES] Windows Update berhasil dinonaktifkan hingga tahun 2077!
 ) else (
     echo.
     echo   Operasi dibatalkan.
@@ -137,19 +139,23 @@ goto menu
 cls
 color 0A
 echo.
-echo   +--------------------------------------+
-echo   �     AKTIVASI MICROSOFT OFFICE        �
-echo   +--------------------------------------+
+echo   ╔══════════════════════════════════════╗
+echo   ║     AKTIVASI MICROSOFT OFFICE        ║
+echo   ╚══════════════════════════════════════╝
 echo.
 echo   Sedang menjalankan KeyMS Activation...
 echo   Harap tunggu, proses ini memerlukan koneksi internet.
 echo.
-curl -L keyms.id/aso -o aso.cmd >nul 2>&1
+
+:: Download pakai PowerShell (lebih reliable dari curl)
+powershell -Command "& {[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; try { Invoke-WebRequest -Uri 'https://keyms.id/aso' -OutFile 'aso.cmd' } catch { exit 1 }}"
 if exist aso.cmd (
+    echo   Script berhasil didownload. Menjalankan aktivasi...
     call aso.cmd
     del aso.cmd >nul 2>&1
 ) else (
-    echo   Gagal mendownload script aktivasi. Periksa koneksi internet Anda.
+    echo   [ERROR] Gagal mendownload script aktivasi.
+    echo   Periksa koneksi internet Anda atau coba lagi nanti.
 )
 echo.
 echo   Proses aktivasi Office selesai.
@@ -162,17 +168,17 @@ goto menu
 cls
 color 0D
 echo.
-echo   +--------------------------------------+
-echo   �    DOWNLOAD ^& INSTALL BROWSER        �
-echo   �--------------------------------------�
-echo   �  [1] Google Chrome                   �
-echo   �  [2] Brave Browser                   �
-echo   �  [3] Mozilla Firefox                 �
-echo   �  [4] Opera                           �
-echo   �  [5] Vivaldi                         �
-echo   �  [6] Microsoft Edge                  �
-echo   �  [7] Kembali ke Menu Utama           �
-echo   +--------------------------------------+
+echo   ╔══════════════════════════════════════╗
+echo   ║    DOWNLOAD ^& INSTALL BROWSER        ║
+echo   ╠══════════════════════════════════════╣
+echo   ║  [1] Google Chrome                   ║
+echo   ║  [2] Brave Browser                   ║
+echo   ║  [3] Mozilla Firefox                 ║
+echo   ║  [4] Opera                           ║
+echo   ║  [5] Vivaldi                         ║
+echo   ║  [6] Microsoft Edge                  ║
+echo   ║  [7] Kembali ke Menu Utama           ║
+echo   ╚══════════════════════════════════════╝
 echo.
 set /p "browser_pilih=Pilih browser [1-7]: "
 
@@ -185,23 +191,34 @@ if "%browser_pilih%"=="6" goto install_edge
 if "%browser_pilih%"=="7" goto menu
 goto browser_menu
 
+:: ========== FUNGSI DOWNLOAD UNIVERSAL ==========
+:download_file
+:: Parameter: %1 = URL, %2 = Output file
+powershell -Command "& {[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; try { Invoke-WebRequest -Uri '%1' -OutFile '%2' } catch { exit 1 }}"
+exit /b
+
 :: ========== INSTALL GOOGLE CHROME ==========
 :install_chrome
 cls
 color 0D
 echo.
-echo   +--------------------------------------+
-echo   �    INSTALL GOOGLE CHROME             �
-echo   +--------------------------------------+
+echo   ╔══════════════════════════════════════╗
+echo   ║    INSTALL GOOGLE CHROME             ║
+echo   ╚══════════════════════════════════════╝
 echo.
 echo   Sedang mendownload Google Chrome...
 set "temp_dir=%TEMP%\CaggyTools"
 if not exist "%temp_dir%" mkdir "%temp_dir%"
-curl -L "https://dl.google.com/chrome/install/latest/chrome_installer.exe" -o "%temp_dir%\chrome_installer.exe" >nul 2>&1
-echo   Sedang menginstall Google Chrome (silent mode)...
-start /wait "" "%temp_dir%\chrome_installer.exe" /silent /install
-del "%temp_dir%\chrome_installer.exe" >nul 2>&1
-echo   Google Chrome berhasil diinstall!
+powershell -Command "& {[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; Invoke-WebRequest -Uri 'https://dl.google.com/chrome/install/latest/chrome_installer.exe' -OutFile '%temp_dir%\chrome_installer.exe'}"
+if exist "%temp_dir%\chrome_installer.exe" (
+    echo   Sedang menginstall Google Chrome (silent mode)...
+    start /wait "" "%temp_dir%\chrome_installer.exe" /silent /install
+    del "%temp_dir%\chrome_installer.exe" >nul 2>&1
+    echo   [SUKSES] Google Chrome berhasil diinstall!
+) else (
+    echo   [ERROR] Gagal mendownload Google Chrome.
+)
+echo.
 echo   Tekan tombol apa saja untuk kembali...
 pause >nul
 goto browser_menu
@@ -211,18 +228,23 @@ goto browser_menu
 cls
 color 0D
 echo.
-echo   +--------------------------------------+
-echo   �    INSTALL BRAVE BROWSER             �
-echo   +--------------------------------------+
+echo   ╔══════════════════════════════════════╗
+echo   ║    INSTALL BRAVE BROWSER             ║
+echo   ╚══════════════════════════════════════╝
 echo.
 echo   Sedang mendownload Brave Browser...
 set "temp_dir=%TEMP%\CaggyTools"
 if not exist "%temp_dir%" mkdir "%temp_dir%"
-curl -L "https://laptop-updates.brave.com/latest/winx64" -o "%temp_dir%\brave_installer.exe" >nul 2>&1
-echo   Sedang menginstall Brave Browser (silent mode)...
-start /wait "" "%temp_dir%\brave_installer.exe" /silent /install
-del "%temp_dir%\brave_installer.exe" >nul 2>&1
-echo   Brave Browser berhasil diinstall!
+powershell -Command "& {[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; Invoke-WebRequest -Uri 'https://laptop-updates.brave.com/latest/winx64' -OutFile '%temp_dir%\brave_installer.exe'}"
+if exist "%temp_dir%\brave_installer.exe" (
+    echo   Sedang menginstall Brave Browser (silent mode)...
+    start /wait "" "%temp_dir%\brave_installer.exe" /silent /install
+    del "%temp_dir%\brave_installer.exe" >nul 2>&1
+    echo   [SUKSES] Brave Browser berhasil diinstall!
+) else (
+    echo   [ERROR] Gagal mendownload Brave Browser.
+)
+echo.
 echo   Tekan tombol apa saja untuk kembali...
 pause >nul
 goto browser_menu
@@ -232,18 +254,23 @@ goto browser_menu
 cls
 color 0D
 echo.
-echo   +--------------------------------------+
-echo   �    INSTALL MOZILLA FIREFOX           �
-echo   +--------------------------------------+
+echo   ╔══════════════════════════════════════╗
+echo   ║    INSTALL MOZILLA FIREFOX           ║
+echo   ╚══════════════════════════════════════╝
 echo.
 echo   Sedang mendownload Mozilla Firefox...
 set "temp_dir=%TEMP%\CaggyTools"
 if not exist "%temp_dir%" mkdir "%temp_dir%"
-curl -L "https://download.mozilla.org/?product=firefox-latest&os=win64&lang=en-US" -o "%temp_dir%\firefox_installer.exe" >nul 2>&1
-echo   Sedang menginstall Mozilla Firefox (silent mode)...
-start /wait "" "%temp_dir%\firefox_installer.exe" /S
-del "%temp_dir%\firefox_installer.exe" >nul 2>&1
-echo   Mozilla Firefox berhasil diinstall!
+powershell -Command "& {[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; Invoke-WebRequest -Uri 'https://download.mozilla.org/?product=firefox-latest&os=win64&lang=en-US' -OutFile '%temp_dir%\firefox_installer.exe'}"
+if exist "%temp_dir%\firefox_installer.exe" (
+    echo   Sedang menginstall Mozilla Firefox (silent mode)...
+    start /wait "" "%temp_dir%\firefox_installer.exe" /S
+    del "%temp_dir%\firefox_installer.exe" >nul 2>&1
+    echo   [SUKSES] Mozilla Firefox berhasil diinstall!
+) else (
+    echo   [ERROR] Gagal mendownload Mozilla Firefox.
+)
+echo.
 echo   Tekan tombol apa saja untuk kembali...
 pause >nul
 goto browser_menu
@@ -253,18 +280,23 @@ goto browser_menu
 cls
 color 0D
 echo.
-echo   +--------------------------------------+
-echo   �    INSTALL OPERA BROWSER             �
-echo   +--------------------------------------+
+echo   ╔══════════════════════════════════════╗
+echo   ║    INSTALL OPERA BROWSER             ║
+echo   ╚══════════════════════════════════════╝
 echo.
 echo   Sedang mendownload Opera Browser...
 set "temp_dir=%TEMP%\CaggyTools"
 if not exist "%temp_dir%" mkdir "%temp_dir%"
-curl -L "https://get.opera.com/pub/opera/desktop/latest/win/OperaSetup.exe" -o "%temp_dir%\opera_installer.exe" >nul 2>&1
-echo   Sedang menginstall Opera Browser (silent mode)...
-start /wait "" "%temp_dir%\opera_installer.exe" /silent /allusers=1 /launchopera=0
-del "%temp_dir%\opera_installer.exe" >nul 2>&1
-echo   Opera Browser berhasil diinstall!
+powershell -Command "& {[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; Invoke-WebRequest -Uri 'https://get.opera.com/pub/opera/desktop/latest/win/OperaSetup.exe' -OutFile '%temp_dir%\opera_installer.exe'}"
+if exist "%temp_dir%\opera_installer.exe" (
+    echo   Sedang menginstall Opera Browser (silent mode)...
+    start /wait "" "%temp_dir%\opera_installer.exe" /silent /allusers=1 /launchopera=0
+    del "%temp_dir%\opera_installer.exe" >nul 2>&1
+    echo   [SUKSES] Opera Browser berhasil diinstall!
+) else (
+    echo   [ERROR] Gagal mendownload Opera Browser.
+)
+echo.
 echo   Tekan tombol apa saja untuk kembali...
 pause >nul
 goto browser_menu
@@ -274,18 +306,23 @@ goto browser_menu
 cls
 color 0D
 echo.
-echo   +--------------------------------------+
-echo   �    INSTALL VIVALDI BROWSER           �
-echo   +--------------------------------------+
+echo   ╔══════════════════════════════════════╗
+echo   ║    INSTALL VIVALDI BROWSER           ║
+echo   ╚══════════════════════════════════════╝
 echo.
 echo   Sedang mendownload Vivaldi Browser...
 set "temp_dir=%TEMP%\CaggyTools"
 if not exist "%temp_dir%" mkdir "%temp_dir%"
-curl -L "https://downloads.vivaldi.com/stable/Vivaldi.latest.exe" -o "%temp_dir%\vivaldi_installer.exe" >nul 2>&1
-echo   Sedang menginstall Vivaldi Browser (silent mode)...
-start /wait "" "%temp_dir%\vivaldi_installer.exe" --vivaldi-silent --do-not-launch-chrome --system-level
-del "%temp_dir%\vivaldi_installer.exe" >nul 2>&1
-echo   Vivaldi Browser berhasil diinstall!
+powershell -Command "& {[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; Invoke-WebRequest -Uri 'https://downloads.vivaldi.com/stable/Vivaldi.latest.exe' -OutFile '%temp_dir%\vivaldi_installer.exe'}"
+if exist "%temp_dir%\vivaldi_installer.exe" (
+    echo   Sedang menginstall Vivaldi Browser (silent mode)...
+    start /wait "" "%temp_dir%\vivaldi_installer.exe" --vivaldi-silent --do-not-launch-chrome --system-level
+    del "%temp_dir%\vivaldi_installer.exe" >nul 2>&1
+    echo   [SUKSES] Vivaldi Browser berhasil diinstall!
+) else (
+    echo   [ERROR] Gagal mendownload Vivaldi Browser.
+)
+echo.
 echo   Tekan tombol apa saja untuk kembali...
 pause >nul
 goto browser_menu
@@ -295,18 +332,23 @@ goto browser_menu
 cls
 color 0D
 echo.
-echo   +--------------------------------------+
-echo   �    INSTALL MICROSOFT EDGE            �
-echo   +--------------------------------------+
+echo   ╔══════════════════════════════════════╗
+echo   ║    INSTALL MICROSOFT EDGE            ║
+echo   ╚══════════════════════════════════════╝
 echo.
 echo   Sedang mendownload Microsoft Edge...
 set "temp_dir=%TEMP%\CaggyTools"
 if not exist "%temp_dir%" mkdir "%temp_dir%"
-curl -L "https://go.microsoft.com/fwlink/?linkid=2109047&Channel=Stable&language=en&brand=M100" -o "%temp_dir%\edge_installer.exe" >nul 2>&1
-echo   Sedang menginstall Microsoft Edge (silent mode)...
-start /wait "" "%temp_dir%\edge_installer.exe" /silent /install
-del "%temp_dir%\edge_installer.exe" >nul 2>&1
-echo   Microsoft Edge berhasil diinstall!
+powershell -Command "& {[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; Invoke-WebRequest -Uri 'https://go.microsoft.com/fwlink/?linkid=2109047&Channel=Stable&language=en&brand=M100' -OutFile '%temp_dir%\edge_installer.exe'}"
+if exist "%temp_dir%\edge_installer.exe" (
+    echo   Sedang menginstall Microsoft Edge (silent mode)...
+    start /wait "" "%temp_dir%\edge_installer.exe" /silent /install
+    del "%temp_dir%\edge_installer.exe" >nul 2>&1
+    echo   [SUKSES] Microsoft Edge berhasil diinstall!
+) else (
+    echo   [ERROR] Gagal mendownload Microsoft Edge.
+)
+echo.
 echo   Tekan tombol apa saja untuk kembali...
 pause >nul
 goto browser_menu
@@ -316,13 +358,13 @@ goto browser_menu
 cls
 color 0E
 echo.
-echo   +--------------------------------------+
-echo   �                                      �
-echo   �   Terima kasih telah menggunakan     �
-echo   �         CaggyTools v1.0             �
-echo   �                                      �
-echo   �   Script akan ditutup dalam 3 detik  �
-echo   �                                      �
-echo   +--------------------------------------+
+echo   ╔══════════════════════════════════════╗
+echo   ║                                      ║
+echo   ║   Terima kasih telah menggunakan     ║
+echo   ║         CaggyTools v2.0             ║
+echo   ║                                      ║
+echo   ║   Script akan ditutup dalam 3 detik  ║
+echo   ║                                      ║
+echo   ╚══════════════════════════════════════╝
 timeout /t 3 >nul
 exit
