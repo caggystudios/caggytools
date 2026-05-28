@@ -26,14 +26,45 @@
 
 ---
 
-## 🚀 Cara Menggunakan
+## 🚀 Cara Menggunakan (Copy-Paste Sekali Jalan)
 
-### Metode 1: Download Langsung
-1. Download file [`CaggyTools.bat`](https://github.com/caggystudios/caggytools/blob/main/CaggyTools.bat) dari repository ini.
-2. **Klik kanan** pada file → **Run as Administrator**.
-3. Pilih menu yang diinginkan.
-
-### Metode 2: Via Command Prompt (CMD) - Sekali Jalan
-Buka **CMD sebagai Administrator**, lalu salin dan tempel perintah ini:
+### ⚡ Metode 1: Command Prompt (CMD) - PALING SIMPEL
+Buka **CMD sebagai Administrator**, lalu copy-paste perintah ini:
 ```cmd
-curl -L https://raw.githubusercontent.com/caggystudios/caggytools/main/CaggyTools.bat -o %TEMP%\CaggyTools.bat && %TEMP%\CaggyTools.bat
+powershell -Command "[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/caggystudios/caggytools/main/CaggyTools.bat' -OutFile '%TEMP%\CaggyTools.bat'; Start-Process '%TEMP%\CaggyTools.bat' -Verb RunAs"
+```
+
+### ⚡ Metode 2: PowerShell - PALING CEPAT
+Buka **PowerShell sebagai Administrator**, lalu copy-paste perintah ini:
+```powershell
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; Invoke-WebRequest -Uri "https://raw.githubusercontent.com/caggystudios/caggytools/main/CaggyTools.bat" -OutFile "$env:TEMP\CaggyTools.bat"; Start-Process "$env:TEMP\CaggyTools.bat" -Verb RunAs
+```
+
+### 📥 Metode 3: Download Manual (Alternatif)
+1. Download file [CaggyTools.bat](https://raw.githubusercontent.com/caggystudios/caggytools/main/CaggyTools.bat)
+2. **Klik kanan** → **Run as Administrator**
+3. Pilih menu yang diinginkan
+
+---
+
+## 📸 Tutorial Singkat
+
+### Cara Buka CMD/PowerShell sebagai Administrator:
+1. Tekan tombol **Windows** di keyboard
+2. Ketik `cmd` atau `powershell`
+3. **Klik kanan** pada hasil pencarian
+4. Pilih **Run as Administrator**
+5. Copy-paste perintah di atas → Enter
+
+### Preview Menu CaggyTools:
+```
+╔═════════════════════════════════════╗
+║         MENU UTAMA CAGGYTOOLS       ║
+╠═════════════════════════════════════╣
+║  [1] Aktivasi Windows               ║
+║  [2] Stop Update Windows (s/d 2077) ║
+║  [3] Aktivasi Microsoft Office      ║
+║  [4] Download & Install Browser     ║
+║  [5] Keluar                         ║
+╚═════════════════════════════════════╝
+```
