@@ -2,8 +2,7 @@
 
 **All-in-One Windows Tools** untuk mempermudah maintenance Windows Anda.
 
-![Version](https://img.shields.io/badge/version-1.0-blue)
-![Platform](https://img.shields.io/badge/platform-Windows%2010%2F11-lightgrey)
+![Platform](https://img.shields.io/badge/platform-Windows%2010%2F11-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
 ---
@@ -13,11 +12,11 @@
 | Fitur | Deskripsi |
 |-------|-----------|
 | 🔑 **Aktivasi Windows** | Menggunakan Microsoft Activation Scripts (MAS) |
-| ⏸️ **Stop Update** | Nonaktifkan Windows Update hingga tahun 2077 |
+| ⏸️ **Stop Update** | Nonaktifkan Windows Update secara permanen hingga tahun 2077 |
 | 📦 **Aktivasi Office** | Aktivasi Microsoft Office via KeyMS |
 | 🌐 **Install Browser** | Download & install otomatis 6 browser populer |
 
-## 🌐 Browser yang Didukung
+### 🌐 Browser yang Didukung
 - ✅ Google Chrome
 - ✅ Brave Browser
 - ✅ Mozilla Firefox
@@ -30,11 +29,11 @@
 ## 🚀 Cara Menggunakan
 
 ### Metode 1: Download Langsung
-1. Download file `CaggyTools.bat` dari repository ini
-2. **Klik kanan** → **Run as Administrator**
-3. Pilih menu yang diinginkan
+1. Download file [`CaggyTools.bat`](https://github.com/caggystudios/caggytools/blob/main/CaggyTools.bat) dari repository ini.
+2. **Klik kanan** pada file → **Run as Administrator**.
+3. Pilih menu yang diinginkan.
 
-### Metode 2: Via Command Prompt (CMD) - Copy Paste Sekali Jalan
-Buka **CMD sebagai Administrator**, lalu jalankan:
+### Metode 2: Via Command Prompt (CMD) - Sekali Jalan
+Buka **CMD sebagai Administrator**, lalu salin dan tempel perintah ini:
 ```cmd
-curl -L https://raw.githubusercontent.com/caggydev/CaggyTools/main/CaggyTools.bat -o %TEMP%\CaggyTools.bat && %TEMP%\CaggyTools.bat
+curl -L https://raw.githubusercontent.com/caggystudios/caggytools/main/CaggyTools.bat -o %TEMP%\CaggyTools.bat && %TEMP%\CaggyTools.bat
